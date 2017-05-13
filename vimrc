@@ -27,6 +27,11 @@ Plugin 'vim-scripts/Pydiction'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 
+"Javascript syntax checker
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guides'
+
 "auto-completion stuff
 "Plugin 'klen/python-mode'
 Plugin 'Valloric/YouCompleteMe'
@@ -35,6 +40,7 @@ Plugin 'klen/rope-vim'
 Plugin 'ervandew/supertab'
 ""code folding
 Plugin 'tmhedberg/SimpylFold'
+set nofoldenable
 
 "Colors!!!
 Plugin 'altercation/vim-colors-solarized'
