@@ -63,7 +63,7 @@ colorscheme zellner
 
 " Other stuff
 filetype plugin indent on    " enables filetype detection
-let g:pydiction_location = '~'
+let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict'
 let g:SimpylFold_docstring_preview = 1
 
 "autocomplete
