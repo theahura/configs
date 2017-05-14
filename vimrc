@@ -4,7 +4,6 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'VundleVim/Vundle.vim'
 "git interface
 Plugin 'tpope/vim-fugitive'
@@ -86,12 +85,12 @@ set nu
 
 "------------Start Python PEP 8 stuff----------------
 " Number of spaces that a pre-existing tab is equal to.
-au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
+au BufRead,BufNewFile *py,*pyw,*.c,*.h setlocal tabstop=4
 
 "spaces for indents
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-au BufRead,BufNewFile *.py,*.pyw set expandtab
-au BufRead,BufNewFile *.py set softtabstop=4
+au BufRead,BufNewFile *.py,*pyw setlocal shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw setlocal expandtab
+au BufRead,BufNewFile *.py setlocal softtabstop=4
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
@@ -127,5 +126,7 @@ autocmd FileType python set foldmethod=indent
 nnoremap <space> za
 "----------Stop python PEP 8 stuff--------------
 
-"js stuff"
-au FileType js, html, css setlocal tabstop=2 softtabstop=2 shiftwidth=2
+"Javascript
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
