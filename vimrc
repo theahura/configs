@@ -30,6 +30,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
+"Remember to npm install eslint --global
+leg g:syntastic_javascript_checkers=['eslint']
 
 "auto-completion stuff
 "Plugin 'klen/python-mode'
@@ -85,12 +87,12 @@ set nu
 
 "------------Start Python PEP 8 stuff----------------
 " Number of spaces that a pre-existing tab is equal to.
-au BufRead,BufNewFile *py,*pyw,*.c,*.h setlocal tabstop=4
+au BufRead,BufNewFile *py,*pyw,*.c,*.h setlocal tabstop=2
 
 "spaces for indents
-au BufRead,BufNewFile *.py,*pyw setlocal shiftwidth=4
+au BufRead,BufNewFile *.py,*pyw setlocal shiftwidth=2
 au BufRead,BufNewFile *.py,*.pyw setlocal expandtab
-au BufRead,BufNewFile *.py setlocal softtabstop=4
+au BufRead,BufNewFile *.py setlocal softtabstop=2
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
@@ -129,4 +131,4 @@ nnoremap <space> za
 "Javascript
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
