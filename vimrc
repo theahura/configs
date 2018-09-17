@@ -31,7 +31,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 "Remember to npm install eslint --global
-leg g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_checkers=['eslint']
 
 "auto-completion stuff
 "Plugin 'klen/python-mode'
