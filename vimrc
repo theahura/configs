@@ -64,7 +64,7 @@ set colorcolumn=81
 :inoremap " ""<Esc>i
 :inoremap ' ''<Esc>i
 
-:inoremap <C-j> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
+:inoremap <C-r> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
 colorscheme zellner
 
