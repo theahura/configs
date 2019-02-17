@@ -1,7 +1,7 @@
 Sets up tmux, vimrc, bashrc configs.
 Binds capslock to escape (on release) and control (on hold) with appropriate
 bindings that use these features. Sets up vundle with some custom vim plugins
-and automatic fast pylinting (flake8).
+and some linting.
 
 
 To make this all work...
@@ -13,3 +13,5 @@ Install flake8: https://pypi.org/project/flake8/
 	likely in a virtualenv
 
 Install xcape: https://github.com/alols/xcape
+
+Install eslint with  npm install eslint --global
