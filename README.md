@@ -1,7 +1,7 @@
 Sets up tmux, vimrc, bashrc configs.
 Binds capslock to escape (on release) and control (on hold) with appropriate
 bindings that use these features. Sets up vundle with some custom vim plugins
-and some linting.
+for filesystems (nerdtree) and automatic fast pylinting (flake8).
 
 
 To make this all work...
@@ -9,9 +9,17 @@ To make this all work...
 Install Vundle: https://github.com/VundleVim/Vundle.vim
 	and run :PluginInstall in vim.
 
+Install syntastic (and pathogen): https://github.com/vim-syntastic/syntastic
+
 Install flake8: https://pypi.org/project/flake8/
 	likely in a virtualenv
+  move flake8 config to ~/.config/flake8
 
 Install xcape: https://github.com/alols/xcape
 
-Install eslint with  npm install eslint --global
+Copy brightness_\*.sh to /usr/bin/
+\*note that you may need to move the files separately into home directory and
+then write them in through sudo vim
+Go to keyboard --> shortcuts and add /usr/bin/brightness_\*.sh to new shortcuts.
+You may need to change the number of chars being selected in the 'cut' line
+depending on what the actual monitor name is.
