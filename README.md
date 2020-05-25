@@ -18,8 +18,10 @@ Install flake8: https://pypi.org/project/flake8/
 Install xcape: https://github.com/alols/xcape
 
 Copy brightness_\*.sh to /usr/bin/
+
 \*note that you may need to move the files separately into home directory and
 then write them in through sudo vim
+
 Go to keyboard --> shortcuts and add /usr/bin/brightness_\*.sh to new shortcuts.
 You may need to change the number of chars being selected in the 'cut' line
 depending on what the actual monitor name is.
