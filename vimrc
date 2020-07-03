@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 "vundle
 set nocompatible
 filetype off
@@ -31,7 +33,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 "Remember to npm install eslint --global
-let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 "auto-completion stuff
 "Plugin 'klen/python-mode'
@@ -51,7 +53,7 @@ call vundle#end()
 
 " Mouse
 if has('mouse')
-  set mouse=a
+	set mouse=a
 endif
 
 " Line column at 80 chars
@@ -64,7 +66,7 @@ set colorcolumn=81
 :inoremap " ""<Esc>i
 :inoremap ' ''<Esc>i
 
-:inoremap <C-r> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
+:inoremap <C-e> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
 colorscheme zellner
 
@@ -132,3 +134,10 @@ nnoremap <space> za
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
+"Auto indent on save.
+autocmd BufWritePre * :normal mqHmwgg=G`wzt`q
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#autoformat_config_present = 1
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
