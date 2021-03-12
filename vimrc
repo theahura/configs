@@ -26,20 +26,20 @@ call glaive#Install()
 " Set up useful defaults for codefmt.
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType c,cpp,proto,arduino AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
+  autocmd FileType html,css,sass,scss,less,json,vue,javascript,javascriptreact AutoFormatBuffer prettier
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType python AutoFormatBuffer yapf
   autocmd FileType rust AutoFormatBuffer rustfmt
-  autocmd FileType vue AutoFormatBuffer prettier
 augroup END
 Glaive codefmt plugin[mappings]
 
 " Run autoformatting on save.
-autocmd BufWritePost * FormatCode
+let blacklist = ['yaml']
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | FormatCode
 
 " Make nerdtree trigger on Cntrl-n"
 map <C-n> :NERDTreeTabsToggle<CR>
@@ -60,7 +60,7 @@ if has('mouse')
 endif
 
 " Line column at 80 chars
-set colorcolumn=81
+set colorcolumn=80
 
 " Autocomplete brackets and quotes.
 :inoremap ( ()<Esc>i
