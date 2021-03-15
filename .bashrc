@@ -8,3 +8,9 @@ else
   xcape -e 'Control_L=Escape'
   echo "xcape started"
 fi
+
+alias python=python3.8
+alias pip=pip3
+export PATH=$PATH:$HOME/bin
+
+alias ls='ls --color'
