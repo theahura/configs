@@ -30,7 +30,7 @@ augroup autoformat_settings
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json,vue,javascript,javascriptreact AutoFormatBuffer prettier
+  autocmd FileType html,css,sass,scss,less,json,vue,javascript,javascriptreact,typescript,typescriptreact AutoFormatBuffer prettier
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType python AutoFormatBuffer yapf
   autocmd FileType rust AutoFormatBuffer rustfmt
