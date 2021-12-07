@@ -1,3 +1,5 @@
+set -e
+
 # Install basics.
 sudo apt update
 sudo apt install vim-nox
@@ -13,10 +15,10 @@ sudo apt install npm
 
 # Setup.
 cd ~
-mkdir /home/amol/code
+mkdir /home/$USER/code
 
 # xcape.
-cd /home/amol/code
+cd /home/$USER/code
 sudo apt-get install git gcc make pkg-config libx11-dev libxtst-dev libxi-dev
 git clone https://github.com/alols/xcape.git
 cd xcape
@@ -43,7 +45,7 @@ sudo apt install mono-complete golang nodejs default-jdk npm
 cd ~/.vim/bundle/YouCompleteMe && python3 install.py --all
 
 # Copy dotfiles.
-cd /home/amol/code
+cd /home/$USER/code
 git clone git@github.com:theahura/configs.git
 cd configs
 cp .vimrc ~/.vimrc
