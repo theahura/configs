@@ -16,6 +16,7 @@ Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 
 " Autocompletion plugins.
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 
 " Typescript plugins
@@ -76,7 +77,7 @@ set colorcolumn=80
 :inoremap <C-e> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
 " Colors!
-colorscheme zellner
+colorscheme default
 
 " Other stuff
 filetype plugin indent on    " enables filetype detection
@@ -101,3 +102,6 @@ set backspace=indent,eol,start
 
 set re=0
 set tabpagemax=30
+
+" Copilot. Requires nvm!
+let g:copilot_node_command = "/home/soot/.nvm/versions/node/v19.8.1/bin/node"
