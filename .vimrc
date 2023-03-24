@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 " Plugins that help us make vim more powerful.
 set nocompatible
 filetype off
@@ -18,7 +16,10 @@ Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 
 " Autocompletion plugins.
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+
+" Typescript plugins
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 call glaive#Install()
@@ -53,10 +54,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_typescript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
-let g:syntastic_typescript_eslint_exe = '$(npm bin)/eslint'
 let g:syntastic_filetype_map = {"javascriptreact": "javascript", "typescriptreact": "typescript"}
 
 " Mouse
@@ -81,9 +81,8 @@ colorscheme zellner
 " Other stuff
 filetype plugin indent on    " enables filetype detection
 
-" Useful defaults: line numbering and syntax highlighting.
+" Useful defaults: line numbering.
 set nu
-syntax on
 
 " Number of spaces that a pre-existing tab is equal to. We use 2.
 au BufRead,BufNewFile * setlocal tabstop=2
@@ -99,3 +98,6 @@ set encoding=utf-8
 
 " make backspaces more powerfull.
 set backspace=indent,eol,start
+
+set re=0
+set tabpagemax=30

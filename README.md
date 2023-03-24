@@ -7,6 +7,8 @@ To make this all work...
 
 ## Misc
 
+Install nvm: https://github.com/nvm-sh/nvm
+
 Install xcape: https://github.com/alols/xcape
 
 Copy brightness\_\*.sh to /usr/bin/
@@ -26,11 +28,7 @@ autocomplete, and syntax checking.
 
 There are a few installation steps for plugins.
 
-First, install [pathogen](https://github.com/tpope/vim-pathogen):
-
-`mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
-
-Then install [vundle](https://github.com/VundleVim/Vundle.vim):
+First install [vundle](https://github.com/VundleVim/Vundle.vim):
 
 `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
@@ -51,14 +49,6 @@ Next, install the syntax checker for the language you intend to use.
 - For python, install flake8: `pip install flake8`
 - For js, install eslint: `npm install -g eslint`
 
-For autocompletion, we use YouCompleteMe. We already have the plugin reference
-in the vimrc, so we just need the deps.
+Install copilot for autocomplete:
 
-`apt install build-essential cmake vim-nox python3-dev`
-`apt install mono-complete golang nodejs default-jdk npm`
-
-Then, compile and install YCM.
-
-`cd ~/.vim/bundle/YouCompleteMe && python3 install.py --all`
-
-(In case you get a weird regex error, try [this stackoverflow](https://stackoverflow.com/questions/59439725/cant-create-virtualenv-on-ubuntu-18-04-with-python-3-8).)
+https://github.com/github/copilot.vim
