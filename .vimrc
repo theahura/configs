@@ -16,8 +16,8 @@ Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 
 " Autocompletion plugins.
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe' " Note: runs own tsserver from global.
+Plugin 'dense-analysis/ale'
 
 " Typescript plugins
 Plugin 'leafgarland/typescript-vim'
@@ -43,22 +43,8 @@ Glaive codefmt plugin[mappings]
 let blacklist = ['yaml']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | FormatCode
 
-" Make nerdtree trigger on Cntrl-n"
+" Make nerdtree trigger on Cntrl-n
 map <C-n> :NERDTreeTabsToggle<CR>
-
-" Syntastic defaults.
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_checkers = ['eslint']
-let g:syntastic_filetype_map = {"javascriptreact": "javascript", "typescriptreact": "typescript"}
 
 " Mouse
 if has('mouse')
@@ -74,10 +60,18 @@ set colorcolumn=80
 :inoremap [ []<Esc>i
 :inoremap " ""<Esc>i
 :inoremap ' ''<Esc>i
+:inoremap < <><Esc>i
 :inoremap <C-e> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
+" Remap some keys to make jumping around easier. 
+" Use cntrl-m and cntrl-i to move on the jumplist.
+:nnoremap <C-m> <C-O>
+" Remap some useful ALE jump commands. 
+nnoremap agt :ALEGoToDefinition<CR>
+nnoremap afr :ALEFindReferences<CR>
+
 " Colors!
-colorscheme default
+colorscheme default 
 
 " Other stuff
 filetype plugin indent on    " enables filetype detection
