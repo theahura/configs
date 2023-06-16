@@ -1,0 +1,12 @@
+" Adapt :find for OS X
+" https://github.com/ggreer/the_silver_searcher
+set findprg="ag -s -g %A %s"
+
+" Adapt :grep for OS X
+" https://github.com/ggreer/the_silver_searcher
+set grepprg=ag\ --vimgrep\ $*
+
+" Single pane
+only
+
+set vifminfo=dhistory,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks

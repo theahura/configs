@@ -22,6 +22,9 @@ Plugin 'dense-analysis/ale'
 " Typescript plugins
 Plugin 'leafgarland/typescript-vim'
 
+" Syntax highlighting.
+Plugin 'jparise/vim-graphql'
+
 call vundle#end()
 call glaive#Install()
 
@@ -63,15 +66,21 @@ set colorcolumn=80
 :inoremap < <><Esc>i
 :inoremap <C-e> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
+" Disable the ycm diagnostics UI because it conflicts with ALE.
+let g:ycm_show_diagnostics_ui = 0
+
 " Remap some keys to make jumping around easier. 
 " Use cntrl-m and cntrl-i to move on the jumplist.
 :nnoremap <C-m> <C-O>
+
 " Remap some useful ALE jump commands. 
 nnoremap agt :ALEGoToDefinition<CR>
 nnoremap afr :ALEFindReferences<CR>
 
 " Colors!
 colorscheme default 
+hi SpellBad ctermbg=DarkGrey
+hi Search ctermbg=Black ctermfg=White
 
 " Other stuff
 filetype plugin indent on    " enables filetype detection
