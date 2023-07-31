@@ -24,6 +24,7 @@ Plugin 'leafgarland/typescript-vim'
 
 " Syntax highlighting.
 Plugin 'jparise/vim-graphql'
+Plugin 'posva/vim-vue'
 
 call vundle#end()
 call glaive#Install()
@@ -65,6 +66,10 @@ set colorcolumn=80
 :inoremap ' ''<Esc>i
 :inoremap < <><Esc>i
 :inoremap <C-e> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
+
+" Set up vue linting.
+" Note that volar requires a global install of @volar/vue-language-server
+let g:ale_linters = { 'vue': ['volar'] }
 
 " Disable the ycm diagnostics UI because it conflicts with ALE.
 let g:ycm_show_diagnostics_ui = 0
@@ -108,3 +113,6 @@ set tabpagemax=30
 
 " Copilot. Requires nvm!
 let g:copilot_node_command = "/home/soot/.nvm/versions/node/v19.8.1/bin/node"
+
+" Clipboard support. Requires vim-gtk!
+set clipboard=unnamedplus
