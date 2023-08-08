@@ -7,8 +7,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Filesystem plugins.
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'vifm/vifm.vim'
 
 " Autoformating plugins.
 Plugin 'google/vim-maktaba'
@@ -47,8 +46,10 @@ Glaive codefmt plugin[mappings]
 let blacklist = ['yaml']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 | FormatCode
 
-" Make nerdtree trigger on Cntrl-n
-map <C-n> :NERDTreeTabsToggle<CR>
+" Make vifm trigger on Cntrl-n
+map <C-n> :vert TabVifm<CR>
+let g:vifm_embed_term = 1
+let g:vifm_embed_split = 1
 
 " Mouse
 if has('mouse')
@@ -68,7 +69,6 @@ set colorcolumn=80
 :inoremap <C-e> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
 " Set up vue linting.
-" Note that volar requires a global install of @volar/vue-language-server
 let g:ale_linters = { 'vue': ['volar'] }
 
 " Disable the ycm diagnostics UI because it conflicts with ALE.
