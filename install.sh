@@ -10,9 +10,10 @@ sudo apt install silversearcher-ag
 # Python.
 sudo apt install python3-pip
 
-# Node.
+# Node and nvm
 sudo apt install nodejs
 sudo apt install npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 
 # Setup.
 cd ~
