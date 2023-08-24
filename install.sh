@@ -2,7 +2,7 @@ set -e
 
 # Install basics.
 sudo apt update
-sudo apt install vim-nox
+sudo apt install vim-gnome
 sudo apt install tmux
 sudo apt install curl
 sudo apt install silversearcher-ag

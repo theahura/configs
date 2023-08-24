@@ -9,14 +9,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Filesystem plugins.
 Plugin 'vifm/vifm.vim'
 
-" Autoformating plugins.
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
-
 " Autocompletion plugins.
 Plugin 'Valloric/YouCompleteMe' " Note: runs own tsserver from global.
 Plugin 'dense-analysis/ale'
+Plugin 'github/copilot.vim'
 
 " Typescript plugins
 Plugin 'leafgarland/typescript-vim'
@@ -26,25 +22,6 @@ Plugin 'jparise/vim-graphql'
 Plugin 'posva/vim-vue'
 
 call vundle#end()
-call glaive#Install()
-
-" Set up useful defaults for codefmt.
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,arduino AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json,vue,javascript,javascriptreact,typescript,typescriptreact AutoFormatBuffer prettier
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  autocmd FileType rust AutoFormatBuffer rustfmt
-augroup END
-Glaive codefmt plugin[mappings]
-
-" Run autoformatting on save.
-let blacklist = ['yaml']
-autocmd BufWritePre * if index(blacklist, &ft) < 0 | FormatCode
 
 " Make vifm trigger on Cntrl-n
 map <C-n> :vert TabVifm<CR>
@@ -74,16 +51,33 @@ let g:ale_linters = { 'vue': ['volar'] }
 " Disable the ycm diagnostics UI because it conflicts with ALE.
 let g:ycm_show_diagnostics_ui = 0
 
-" Remap some keys to make jumping around easier. 
+" Remap some keys to make jumping around easier.
 " Use cntrl-m and cntrl-i to move on the jumplist.
 :nnoremap <C-m> <C-O>
 
-" Remap some useful ALE jump commands. 
+" Remap some useful ALE jump commands.
 nnoremap agt :ALEGoToDefinition<CR>
 nnoremap afr :ALEFindReferences<CR>
+nnoremap ah :ALEHover<CR>
+nnoremap as :ALESymbolSearch<CR>
+
+" Autofix files with ALE.
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \  'javascript': ['prettier', 'eslint'],
+      \  'typescript': ['prettier', 'eslint'],
+      \  'javascriptreact': ['prettier', 'eslint'],
+      \  'typescriptreact': ['prettier', 'eslint'],
+      \  'css': ['prettier'],
+      \  'html': ['prettier'],
+      \  'json': ['prettier'],
+      \  'vue': ['prettier'],
+      \  'python': ['yapf'],
+      \}
 
 " Colors!
-colorscheme default 
+colorscheme default
 hi SpellBad ctermbg=DarkGrey
 hi Search ctermbg=Black ctermfg=White
 
@@ -111,8 +105,8 @@ set backspace=indent,eol,start
 set re=0
 set tabpagemax=30
 
-" Copilot. Requires nvm!
-let g:copilot_node_command = "/home/soot/.nvm/versions/node/v19.8.1/bin/node"
+" Copilot. Requires nvm! This may require updates to the path as well.
+let g:copilot_node_command = "/home/$USER/.nvm/versions/node/v19.9.0/bin/node"
 
 " Clipboard support. Requires vim-gtk!
 set clipboard=unnamedplus
