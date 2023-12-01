@@ -45,7 +45,8 @@ set colorcolumn=80
 :inoremap < <><Esc>i
 :inoremap <C-e> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
-" Set up vue linting.
+" Set up vue linting. Note that this requires a global volar install, see
+" https://github.com/dense-analysis/ale/pull/4552
 let g:ale_linters = { 'vue': ['volar'] }
 
 " Disable the ycm diagnostics UI because it conflicts with ALE.
