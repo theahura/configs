@@ -10,3 +10,5 @@ set grepprg=ag\ --vimgrep\ $*
 only
 
 set vifminfo=dhistory,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks
+
+windo normal zo
