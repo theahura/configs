@@ -20,7 +20,7 @@ sudo apt install -y python3-pip
 sudo apt install -y nodejs npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 source ~/.bashrc
-nvm install 17
+# nvm install 17
 
 # Setup.
 cd ~
@@ -47,16 +47,9 @@ fi
 # Plugin install.
 vim +PluginInstall +qall
 
-# Formatters.
-pip install yapf
-sudo npm install -g prettier
-sudo npm install -g @volar/vue-language-server
-# Syntax.
-pip install flake8
-sudo npm install -g eslint
 # YCM.
 sudo apt install -y build-essential cmake vim-nox python3-dev mono-complete golang nodejs default-jdk npm
-cd ~/.vim/bundle/YouCompleteMe && python3 install.py 
+cd ~/.vim/bundle/YouCompleteMe && python3 install.py
 
 # Vifm
 sudo apt install -y vifm
@@ -71,8 +64,6 @@ cp .vimrc ~/.vimrc
 cp .tmux.conf ~/.tmux.conf
 cp .eslintrc ~/.eslintrc
 cp .bashrc ~/.bashrc
+cp .nvmrc ~/.nvmrc
 cp -R .config ~/.config
 cp -R .vifm ~/.vifm
-
-# Get the initial node version.
-nvm install 17
