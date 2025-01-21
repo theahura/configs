@@ -70,6 +70,7 @@ require("lazy").setup({
       auto_suggestions_provider = "copilot",
       behaviour = {
         auto_suggestions = true,
+        minimize_diff = false
       }
     },
     build = "make",
@@ -102,6 +103,7 @@ require("lazy").setup({
             "typescript",
             "vim",
             "vimdoc",
+            "vue",
             "xml",
             "yaml",
           },
@@ -266,7 +268,14 @@ vim.g.ale_fixers = {
 -- Set UNIX line endings for all new files
 vim.opt.fileformat = 'unix'
 
--- A few additional syntax highlighting things.
+
+-- To get icons to work, do the following:
+-- mkdir -p ~/.local/share/fonts
+-- wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
+-- fc-cache -fv
+--
+-- and then set the term font to use JetBrainsMono
+
 vim.opt.laststatus = 3
 vim.opt.syntax = "on"
 vim.g.markdown_fenced_languages = {'python', 'javascript', 'html', 'bash', 'sh'}
