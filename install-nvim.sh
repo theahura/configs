@@ -9,6 +9,7 @@ sudo apt update
 sudo apt install tmux
 sudo apt install curl
 sudo apt install silversearcher-ag
+sudo apt install xclip  # For copypasting inside nvim
 
 # Python.
 sudo apt install python3-pip
@@ -45,7 +46,8 @@ sudo npm install -g eslint
 # Vifm
 sudo apt install vifm
 # Run all plugin install.
-# ...
+nvim +PluginInstall +qall
+
 
 # Copy dotfiles.
 cd /home/$USER/code
@@ -56,9 +58,3 @@ cp .eslintrc ~/.eslintrc
 cp .bashrc ~/.bashrc
 cp -R .config ~/.config
 cp -R .vifm ~/.vifm
-
-
-# Things to add:
-# - setting up cursor
-# - moving nvim dotfiles around
-# - setting up nerdfont
