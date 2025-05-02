@@ -34,8 +34,41 @@ require("lazy").setup({
   -- Autocomplete and code fix Plugins
   {
     'dense-analysis/ale',
+    event = "VeryLazy", -- or more specific events like "BufReadPre"
     config = function()
-      -- ALE configuration will be handled below
+      -- ALE configuration
+			vim.g.ale_fixers = {
+			  ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
+			  javascript = { 'prettier', 'eslint' },
+			  typescript = { 'prettier', 'eslint' },
+			  javascriptreact = { 'prettier', 'eslint' },
+			  typescriptreact = { 'prettier', 'eslint' },
+			  css = { 'prettier' },
+			  html = { 'prettier' },
+			  json = { 'prettier' },
+			  vue = { 'prettier' },
+			  python = { 'yapf' },
+			}
+
+      vim.g.ale_linters = {
+        vue = {'eslint', 'volar'},
+        typescript = {'eslint', 'tsserver'}
+      }
+
+      -- Volar specific settings
+      vim.g.ale_vue_volar_executable = 'vue-language-server'
+      vim.g.ale_vue_volar_use_global = 1
+
+      -- General settings
+      vim.g.ale_use_global_executables = 0
+      vim.g.ale_sign_error = '✘'
+      vim.g.ale_sign_warning = '⚠'
+      vim.g.ale_completion_enabled = 1
+      vim.g.ale_lint_on_text_changed = 'never'
+      vim.g.ale_lint_on_insert_leave = 0
+      vim.g.ale_lint_on_save = 1
+      vim.g.ale_fix_on_save = 1
+      vim.g.ale_echo_msg_format = '[%linter%] %s [%severity%]'
     end,
   },
 
@@ -50,14 +83,34 @@ require("lazy").setup({
     'jparise/vim-graphql',
     ft = { "graphql" },
   },
+  -- Colorscheme
+  {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Configure nightfox
+      require('nightfox').setup({
+        options = {
+          styles = {
+            comments = "italic",
+            keywords = "bold",
+            types = "italic,bold",
+          },
+        },
+        groups = {
+          terafox = {
+            Normal = { bg = "#000000" }, -- Set pure black background
+          },
+        },
+      })
+      -- Set the colorscheme
+      vim.cmd("colorscheme terafox")
+    end,
+  },
   {
     'posva/vim-vue',
     ft = { "vue" },
-  },
-
-  -- Colorscheme
-  {
-    "rebelot/kanagawa.nvim",
   },
 
   -- Avante: AI tools
@@ -67,10 +120,19 @@ require("lazy").setup({
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      auto_suggestions_provider = "copilot",
+      provider = "gemini",
+      memory_summary_provider = "gemini",
+      debug = true,
       behaviour = {
-        auto_suggestions = true,
-        minimize_diff = false
+        auto_suggestions = false,
+        minimize_diff = false,
+        disable_tools = true,
+      },
+      claude = {},
+      gemini = {
+        model = "gemini-2.5-pro-preview-03-25",
+        max_tokens = 1000000,
+        disable_tools = true,
       }
     },
     build = "make",
@@ -117,6 +179,7 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "ibhagwan/fzf-lua",
       "zbirenbaum/copilot.lua", -- for providers='copilot'
       {
         "HakonHarnes/img-clip.nvim",
@@ -143,7 +206,8 @@ require("lazy").setup({
     },
   },
 }, {
-  checker = { enabled = true },
+  checker = { enabled = false },
+  change_detection = { enabled = false },
 })
 
 -- General Neovim Settings
@@ -204,19 +268,8 @@ vim.keymap.set('n', 'agt', ':ALEGoToDefinition<CR>', opts)
 vim.keymap.set('n', 'afr', ':ALEFindReferences<CR>', opts)
 vim.keymap.set('n', 'ah', ':ALEHover<CR>', opts)
 vim.keymap.set('n', 'as', ':ALESymbolSearch<CR>', opts)
-
--- Colors and Highlighting
-
--- Set colorscheme (ensure it's installed or adjust accordingly)
-vim.cmd('colorscheme kanagawa')
-
--- Highlight Groups
-vim.api.nvim_set_hl(0, 'SpellBad', { ctermbg = 'DarkGrey' })
-vim.api.nvim_set_hl(0, 'Search', { ctermbg = 'Black', ctermfg = 'White' })
-
--- Additional Highlight Settings (optional)
--- Example:
--- vim.api.nvim_set_hl(0, 'MyHighlightGroup', { fg = '#ffffff', bg = '#000000' })
+vim.keymap.set('n', 'an', '<cmd>ALENext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'ad', ':ALEDetail<CR>', opts)
 
 -- Autocommands
 
@@ -245,25 +298,6 @@ vim.api.nvim_create_autocmd('BufNewFile', {
 })
 
 -- ALE Configuration
-
-vim.g.ale_linters = {
-  vue = { 'volar' },
-}
-
-vim.g.ale_fix_on_save = 1
-
-vim.g.ale_fixers = {
-  ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
-  javascript = { 'prettier', 'eslint' },
-  typescript = { 'prettier', 'eslint' },
-  javascriptreact = { 'prettier', 'eslint' },
-  typescriptreact = { 'prettier', 'eslint' },
-  css = { 'prettier' },
-  html = { 'prettier' },
-  json = { 'prettier' },
-  vue = { 'prettier' },
-  python = { 'yapf' },
-}
 
 -- Set UNIX line endings for all new files
 vim.opt.fileformat = 'unix'
