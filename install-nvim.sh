@@ -31,18 +31,13 @@ cd xcape
 make
 sudo make install
 
-# NVim setup.
+# nvim setup.
 # NerdFont.
 # Note: to finish installing this has to be set in the terminal itself.
 mkdir -p ~/.local/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
 fc-cache -fv
-# Formatters.
-pip install yapf
-sudo npm install -g prettier
-# Syntax.
-pip install flake8
-sudo npm install -g eslint
+
 # Vifm
 sudo apt install vifm
 # Run all plugin install.

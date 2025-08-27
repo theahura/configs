@@ -47,7 +47,7 @@ require("lazy").setup({
 			  html = { 'prettier' },
 			  json = { 'prettier' },
 			  vue = { 'prettier' },
-			  python = { 'yapf' },
+			  python = { 'ruff' },
 			}
 
       vim.g.ale_linters = {
