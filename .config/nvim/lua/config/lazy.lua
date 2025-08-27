@@ -47,13 +47,8 @@ require("lazy").setup({
 			  html = { 'prettier' },
 			  json = { 'prettier' },
 			  vue = { 'prettier' },
-			  python = { 'ruff' },
+			  python = { 'ruff', 'ruff_format' },
 			}
-
-      vim.g.ale_linters = {
-        vue = {'eslint', 'volar'},
-        typescript = {'eslint', 'tsserver'}
-      }
 
       -- Volar specific settings
       vim.g.ale_vue_volar_executable = 'vue-language-server'
